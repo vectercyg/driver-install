@@ -1,78 +1,78 @@
-# GPUÇı¶¯°²×°
-## Ç°ÆÚ×¼±¸
-### ²é¿´Ö§³ÖCUDAµÄGPUÁĞ±í
+# GPUé©±åŠ¨å®‰è£…
+## å‰æœŸå‡†å¤‡
+### æŸ¥çœ‹æ”¯æŒCUDAçš„GPUåˆ—è¡¨
 lspci | grep -i nvidia
-### ²é¿´ÏµÍ³°æ±¾¼Ü¹¹
+### æŸ¥çœ‹ç³»ç»Ÿç‰ˆæœ¬æ¶æ„
 uname -m && cat /etc/redhat-release
-### ÑéÖ¤GCC±àÒë»·¾³
+### éªŒè¯GCCç¼–è¯‘ç¯å¢ƒ
 gcc -v
-### ÑéÖ¤ÏµÍ³ÊÇ·ñ°²×°ÁËÕıÈ·µÄÄÚºËÍ·ÎÄ¼şºÍ¿ª·¢°ü
+### éªŒè¯ç³»ç»Ÿæ˜¯å¦å®‰è£…äº†æ­£ç¡®çš„å†…æ ¸å¤´æ–‡ä»¶å’Œå¼€å‘åŒ…
 sudo yum install kernel-devel-$(uname -r) kernel-headers-$(uname -r)
 
-## ¿ªÊ¼°²×°nvidiaÇı¶¯
-### ÆÁ±ÎÄ¬ÈÏ´øÓĞµÄnouveau
+## å¼€å§‹å®‰è£…nvidiaé©±åŠ¨
+### å±è”½é»˜è®¤å¸¦æœ‰çš„nouveau
 sudo vim /etc/modprobe.d/blacklist-nouveau.conf
-#### Ìí¼Ó
+#### æ·»åŠ 
 blacklist nouveau
 options nouveau modeset=0
-#### ÖØÆô
+#### é‡å¯
 sudo reboot
-#### ÑéÖ¤ÊÇ·ñ³É¹¦£¬³É¹¦ÎŞÊä³ö
+#### éªŒè¯æ˜¯å¦æˆåŠŸï¼ŒæˆåŠŸæ— è¾“å‡º
 lsmod | grep nouveau
-#### ÏÂÔØ¶ÔÓ¦°æ±¾µÄÇı¶¯
+#### ä¸‹è½½å¯¹åº”ç‰ˆæœ¬çš„é©±åŠ¨
 https://cn.download.nvidia.cn/XFree86/Linux-x86_64/525.89.02/NVIDIA-Linux-x86_64-525.89.02.run
 
-### Çı¶¯°²×°
-#### Ê¹ÓÃrootÈ¨ÏŞ
+### é©±åŠ¨å®‰è£…
+#### ä½¿ç”¨rootæƒé™
 su root
-#### ¸øÇı¶¯ÎÄ¼şÔö¼Ó¿ÉÖ´ĞĞÈ¨ÏŞ
+#### ç»™é©±åŠ¨æ–‡ä»¶å¢åŠ å¯æ‰§è¡Œæƒé™
 chmod 777 NVIDIA-Linux-x86_64-525.89.02.run
-#### Ö´ĞĞÇı¶¯°²×°³ÌĞò£¬²»¹¹½¨xconf
+#### æ‰§è¡Œé©±åŠ¨å®‰è£…ç¨‹åºï¼Œä¸æ„å»ºxconf
 ./NVIDIA-Linux-x86_64-525.89.02.run
-#### ÑéÖ¤ÊÇ·ñ³É¹¦°²×°Çı¶¯
+#### éªŒè¯æ˜¯å¦æˆåŠŸå®‰è£…é©±åŠ¨
 nvidia-smi
 
-## ¿ªÊ¼°²×°CUDA¡¢cudnn
-### Ğ¶ÔØ¾É°æ±¾cuda
-#### ½øÈëCUDA°²×°Ä¿Â¼
+## å¼€å§‹å®‰è£…CUDAã€cudnn
+### å¸è½½æ—§ç‰ˆæœ¬cuda
+#### è¿›å…¥CUDAå®‰è£…ç›®å½•
 cd /usr/local/bin/
 ./cuda-uninstaller
 
-### ¿ªÊ¼°²×°CUDA
-#### ÏÂÔØ¶ÔÓ¦°æ±¾µÄCUDAÎÄ¼ş
+### å¼€å§‹å®‰è£…CUDA
+#### ä¸‹è½½å¯¹åº”ç‰ˆæœ¬çš„CUDAæ–‡ä»¶
 https://developer.download.nvidia.com/compute/cuda/11.3.1/local_installers/cuda_11.3.1_465.19.01_linux.run
-#### ĞŞ¸ÄÎÄ¼şÖ´ĞĞÈ¨ÏŞ
+#### ä¿®æ”¹æ–‡ä»¶æ‰§è¡Œæƒé™
 chmod 777 NVIDIA-Linux-x86_64-525.89.02.run
-#### Ö´ĞĞ°²×°³ÌĞò£¬accept£¬È¡ÏûÏÔ¿¨Çı¶¯°²×°
+#### æ‰§è¡Œå®‰è£…ç¨‹åºï¼Œacceptï¼Œå–æ¶ˆæ˜¾å¡é©±åŠ¨å®‰è£…
 sh NVIDIA-Linux-x86_64-525.89.02.run
 
-### ¿ªÊ¼°²×°cudnn
-#### ÏÂÔØ¶ÔÓ¦°æ±¾µÄÏà¹ØÎÄ¼ş
+### å¼€å§‹å®‰è£…cudnn
+#### ä¸‹è½½å¯¹åº”ç‰ˆæœ¬çš„ç›¸å…³æ–‡ä»¶
 https://developer.download.nvidia.com/compute/cudnn/secure/8.6.0/local_installers/11.8/cudnn-linux-x86_64-8.6.0.163_cuda11-archive.tar.xz?hkfC1wlvl5qWNk79oFbZlHJ3aCqFFWePBEQRsely6eI1vAhjpRbXzGChqShOrgwr86yvv1nGXim1FnBk4zj5lHwihvpFzkCW9qtGiZYAsYLkFpoLtrCoAzUse25uuCaJGKWJtDI-OM3fdv_D3yP__MbLfV128uM_vnPCrPBthCzjtwSPXpkXNnO4E5kPsILVZ0yRolcEdo1XQGVWaJ9Vw6AX&t=eyJscyI6InJlZiIsImxzZCI6IlJFRi1hc2suaGVsbG9iaS5jb20vIn0=
-#### ½âÑ¹²¢¸´ÖÆÎÄ¼ş
+#### è§£å‹å¹¶å¤åˆ¶æ–‡ä»¶
 tar -Jxf cudnn-linux-x86_64-8.6.0.163_cuda11-archive.tar.xz
 sudo cp include/* /usr/local/cuda-11.3/targets/x86_64-linux/include/
 sudo cp lib/* /usr/local/cuda-11.3/targets/x86_64-linux/lib/
-#### ĞŞ¸Ä·ÃÎÊÈ¨ÏŞ
+#### ä¿®æ”¹è®¿é—®æƒé™
 sudo chmod +x /usr/local/cuda-11.3/targets/x86_64-linux/lib/libcudnn*
 sudo chmod +x /usr/local/cuda-11.3/targets/x86_64-linux/include/cudnn.h
 
-### ÉèÖÃ»·¾³±äÁ¿
-#### ´ò¿ªÅäÖÃÎÄ¼ş
+### è®¾ç½®ç¯å¢ƒå˜é‡
+#### æ‰“å¼€é…ç½®æ–‡ä»¶
 sudo vim profile
-#### Ìí¼ÓÒÔÏÂÄÚÈİ
+#### æ·»åŠ ä»¥ä¸‹å†…å®¹
 export PATH=/usr/local/cuda-11.3/bin/:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-11.3/targets/x86_64-linux/lib/:$LD_LIBRARY_PATH
 
-### ÑéÖ¤°²×°ÊÇ·ñ³É¹¦
+### éªŒè¯å®‰è£…æ˜¯å¦æˆåŠŸ
 nvcc -V
 
-## ×îÖÕÑéÖ¤
-### ½øÈësampleÎÄ¼ş¼Ğ
+## æœ€ç»ˆéªŒè¯
+### è¿›å…¥sampleæ–‡ä»¶å¤¹
 cd /usr/local/cuda-11.3/samples/
-### ±àÒë
+### ç¼–è¯‘
 sudo make -j8
-### ÔËĞĞÊ¾Àı
+### è¿è¡Œç¤ºä¾‹
 cd /usr/local/cuda-11.3/samples/bin/x86_64/linux/release/
 ./bandwidthTest
  
