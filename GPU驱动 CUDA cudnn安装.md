@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: cuiyonggan
+ * @Date: 2023-02-28 09:41:15
+ * @LastEditors: 
+ * @LastEditTime: 2023-02-28 09:43:48
+-->
 # GPU驱动安装
 ## 前期准备
 ### 查看支持CUDA的GPU列表
@@ -61,8 +69,9 @@ sudo chmod +x /usr/local/cuda-11.3/targets/x86_64-linux/include/cudnn.h
 #### 打开配置文件
 sudo vim profile
 #### 添加以下内容
-export PATH=/usr/local/cuda-11.3/bin/:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda-11.3/targets/x86_64-linux/lib/:$LD_LIBRARY_PATH
+export CUDA_HOME=/usr/local/cuda-11.3
+export PATH=$CUDA_HOME/bin/:$PATH
+export LD_LIBRARY_PATH=$CUDA_HOME/targets/x86_64-linux/lib/:$LD_LIBRARY_PATH
 
 ### 验证安装是否成功
 nvcc -V
