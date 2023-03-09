@@ -1,0 +1,12 @@
+#!/home/pc/anaconda3/envs/cyg_tf1.15/bin/python
+# EASY-INSTALL-ENTRY-SCRIPT: 'shadowsocksr-cli==2.1.10','console_scripts','shadowsocksr-cli'
+__requires__ = 'shadowsocksr-cli==2.1.10'
+import re
+import sys
+from pkg_resources import load_entry_point
+
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
+    sys.exit(
+        load_entry_point('shadowsocksr-cli==2.1.10', 'console_scripts', 'shadowsocksr-cli')()
+    )
