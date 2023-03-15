@@ -4,7 +4,7 @@
  * @Author: cuiyonggan
  * @Date: 2023-02-28 09:29:00
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-02-28 17:42:53
+ * @LastEditTime: 2023-03-01 09:21:05
 -->
 # gcc更新
 ## 安装
@@ -25,6 +25,7 @@ unzip nccl-master
 ## 安装nccl
 cd nccl-master
 sudo make -j12 src.build BUILDDIR=/usr/local/nccl CUDA_HOME=/usr/local/cuda-11.3 NVCC_GENCODE="-gencode=arch=compute_70,code=sm_70"
+sudo make -j12 pkg.redhat.build BUILDDIR=/usr/local/nccl CUDA_HOME=/usr/local/cuda-10.1 NVCC_GENCODE="-gencode=arch=compute_70,code=sm_70"
 
 sudo cp sudo cp /usr/local/nccl/lib/libnccl.so.2.16.5 /usr/lib64
 ## 添加环境变量
@@ -38,7 +39,7 @@ export PATH=$PATH:$NCCL_HOME/bin
 https://github.com/nvidia/nccl-tests
 
 unzip nccl-tests-master.zip
-cd nccl-tests
+cd nccl-tests-master
 make -j12 CUDA_HOME=/usr/local/cuda-11.3 NCCL_HOME=/usr/local/nccl
 #### 在 8 个 GPU ( ) 上运行-g 8，从 8 字节扫描到 128MBytes：
 ./build/all_reduce_perf -b 8 -e 128M -f 2 -g 2
@@ -56,7 +57,7 @@ sudo make install
 ## 设置环境变量
 sudo vim /etc/profile
 
-MPI_HOME=/usr/local/openmpi
+export MPI_HOME=/usr/local/openmpi
 export PATH=${MPI_HOME}/bin:$PATH
 export LD_LIBRARY_PATH=${MPI_HOME}/lib:$LD_LIBRARY_PATH
 export MANPATH=${MPI_HOME}/share/man:$MANPATH
