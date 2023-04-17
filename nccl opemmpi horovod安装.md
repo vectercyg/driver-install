@@ -4,7 +4,7 @@
  * @Author: cuiyonggan
  * @Date: 2023-02-28 09:29:00
  * @LastEditors: Please set LastEditors
- * @LastEditTime: 2023-03-01 09:21:05
+ * @LastEditTime: 2023-04-14 19:27:12
 -->
 # gcc更新
 ## 安装
@@ -48,7 +48,7 @@ make -j12 CUDA_HOME=/usr/local/cuda-11.3 NCCL_HOME=/usr/local/nccl
 ## 下载openmpi
 https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.5.tar.bz2
 ## 解压
-tar -zxvf openmpi-4.1.5.tar.gz
+tar -jxvf openmpi-4.1.5.tar.bz2
 ## 编译安装
 cd openmpi-4.1.5
 sudo ./configure --prefix=/usr/local/openmpi 
